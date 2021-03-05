@@ -1,0 +1,22 @@
+{
+  "name": "tester",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "tester": "bin/tester"
+  },
+  "author": "olix3001",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "commander": "^7.1.0",
+    "esm": "^3.2.25",
+    "execa": "^5.0.0",
+    "listr": "^0.14.3",
+    "rxjs": "^6.6.6"
+  }
+}
