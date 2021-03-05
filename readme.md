@@ -5,3 +5,4 @@
 `tester test <nazwa pliku z twoim rozwiązaniem> <nazwa pliku z rozwiązaniem bruteforce> <nazwa pliku generatora testów>`
 lub jeżeli chcesz wykonać inną ilość testów dopisz na końcu `-c <ilość testów>`
 a jeżeli chcesz usunąć folder 'generated-tests' po zakończeniu testów, dopisz flagę `-r`
+możesz również użyć `--python3` żeby używać polecenia python3 zamiast python (podstawowe)

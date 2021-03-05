@@ -10,6 +10,7 @@ commander.command('test <program> <bruteforce> <generator>')
     .description('test your python program')
     .option('-c --count <count>', 'how many tests', 10)
     .option('-r --remove', 'remove directory after testing')
+    .option('--python3', 'use python3 command instead of just python')
     .action(async (program, bruteforce, generator, options) => {
         let tasks = [];
 
@@ -34,7 +35,7 @@ commander.command('test <program> <bruteforce> <generator>')
                         let subprocess = null;
                         try {
                             observer.next('Generating test');
-                            subprocess = execa('python', [generator]);
+                            subprocess = execa(options.python3 ? 'python3' : 'python', [generator]);
                             subprocess.stdout.pipe(fs.createWriteStream(path.join(testsPath, `test-${i}.in`)));
                             await subprocess;
                         } catch (err) {
@@ -51,7 +52,7 @@ commander.command('test <program> <bruteforce> <generator>')
                         // run bruteforce version
                         try {
                             observer.next('Running bruteforce');
-                            subprocess = execa('python', [bruteforce]);
+                            subprocess = execa(options.python3 ? 'python3' : 'python', [bruteforce]);
                             subprocess.stdout.pipe(fs.createWriteStream(path.join(testsPath, `bruteforce-${i}.out`)));
                             fs.createReadStream(path.join(testsPath, `test-${i}.in`)).pipe(subprocess.stdin);
                             await subprocess;
@@ -69,7 +70,7 @@ commander.command('test <program> <bruteforce> <generator>')
                         // run normal version
                         try {
                             observer.next('Running your program');
-                            subprocess = execa('python', [program]);
+                            subprocess = execa(options.python3 ? 'python3' : 'python', [program]);
                             subprocess.stdout.pipe(fs.createWriteStream(path.join(testsPath, `program-${i}.out`)));
                             fs.createReadStream(path.join(testsPath, `test-${i}.in`)).pipe(subprocess.stdin);
                             await subprocess;
