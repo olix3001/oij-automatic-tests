@@ -130,7 +130,7 @@ commander.command('test <program> <bruteforce> <generator>')
             console.log('\n');
             console.log(chalk.yellow(`Test id: Test ${err.num}`))
             if (err.type == 'generation') {
-                console.log(chalk.red.bold('Trror while generating test'));
+                console.log(chalk.red.bold('Error while generating test'));
             } else if (err.type == 'bruteforce') {
                 console.log(chalk.red.bold('Error while running bruteforce'));
             } else if (err.type == 'program') {
